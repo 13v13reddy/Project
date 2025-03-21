@@ -28,3 +28,20 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/devops:${{ github.run_number }}
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: update k8s manifest
+        run: |
+          sed -i 's|${{ secrets.DOCKER_USERNAME }}/devops:.*|${{ secrets.DOCKER_USERNAME }}/devops:${{ github.run_number }}|' k8s-manifests/deployment.yaml
+    
+      - name: git push
+        run: |       
+          git add k8s-manifests/deployment.yaml
+          git commit -m "update deployment.yaml"
+          git push
+      
