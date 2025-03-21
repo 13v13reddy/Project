@@ -28,7 +28,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/devops:${{ github.run_number }}
-  push:
+  update-manifests:
     needs: build
     runs-on: ubuntu-latest
 
