@@ -38,7 +38,7 @@ jobs:
       
       - name: update k8s manifest
         run: |
-          sed -i 's|${{ secrets.DOCKER_USERNAME }}/devops:.*|${{ secrets.DOCKER_USERNAME }}/devops:${{ github.run_number }}|' k8s-manifests/deployment.yaml
+          sed -i 's|13v13reddy/devops:.*|13v13reddy/devops:${{ github.run_number }}|' k8s-manifests/deployment.yaml
           cat k8s-manifests/deployment.yaml
       - name: git push
         run: |  
