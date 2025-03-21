@@ -40,7 +40,9 @@ jobs:
           sed -i 's|${{ secrets.DOCKER_USERNAME }}/devops:.*|${{ secrets.DOCKER_USERNAME }}/devops:${{ github.run_number }}|' k8s-manifests/deployment.yaml
     
       - name: git push
-        run: |       
+        run: |  
+          git config --global user.email "bobba.brahmareddy@gmail.com"
+          git config --global user.name "Brahma Reddy Bobba"     
           git add k8s-manifests/deployment.yaml
           git commit -m "update deployment.yaml"
           git push
