@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: devops
-          image: 13v13reddy/devops:11
+          image: 13v13reddy/devops:12
           ports:
             - containerPort: 5000
